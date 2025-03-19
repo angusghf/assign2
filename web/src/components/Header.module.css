@@ -1,0 +1,18 @@
+.header {
+    background-color: #3e2c41;
+    color: #f8e1c2;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Garamond', 'Georgia', serif;
+    border-bottom: 4px solid #b78a5b;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.header h1 {
+    font-size: 32px;
+    margin: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+}
