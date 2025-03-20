@@ -35,3 +35,19 @@
     margin-top: 10px;
     margin-right: 10px;
 }
+
+.add-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.spacer {
+    padding-top: 102px;
+    margin-bottom: 10px;
+}

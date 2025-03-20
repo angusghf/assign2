@@ -63,3 +63,50 @@ h1 {
     font-size: 18px;
     color: #333;
 }
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group textarea {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.form-group select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3e2c41;
+    color: #f8e1c2;
+    border: none;
+    cursor: pointer;
+    font-family: 'Garamond', serif;
+    border-radius: 5px;
+    width: auto;
+}
+
+.form-group button:hover {
+    background-color: #5a4c6b;
+}
