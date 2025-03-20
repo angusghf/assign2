@@ -52,9 +52,12 @@ h1 {
 
 .book-card img {
     width: 100%;
-    height: auto;
+    height: 250px; 
+    object-fit: cover; 
     margin-bottom: 10px;
+    border-radius: 5px;
 }
+
 
 .book-card p {
     font-size: 18px;

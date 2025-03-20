@@ -1,7 +1,12 @@
 const express = require('express');
 const app = express();
 const mysql = require("mysql2");
+const cors = require('cors');
 const port = 3000;
+
+
+// Accepts requests from any location or url
+app.use(cors());
 
 app.use(express.static('public'));
 const connection = mysql.createConnection({
@@ -27,7 +32,7 @@ app.get("/books", (req, res) => {
     const sql = `
     SELECT novels.*, authors.name AS author
     FROM novels
-    JOIN authors ON novels.authors_id=authors.id
+    JOIN authors ON novels.author_id=authors.id
         `;
 
     connection.query(sql, (err, results) => {

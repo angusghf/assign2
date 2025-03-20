@@ -1,7 +1,21 @@
+import { useState, useEffect } from "react";
+
 import React from 'react';
 import ABM from '../pages/AllBooks.module.css';
 
 function AllBooks() {
+
+    const [books, setBooks] = useState([]);
+    useEffect(() => {
+        fetch("http://localhost:3000/books")
+            .then(res => res.json())
+            .then((jsonData) => {
+                setBooks(jsonData);
+                // console.log(jsonData);
+            })
+    }, []);
+
+
     return (
         <div className={ABM['books-container']}>
             <h1>My Favorite Books</h1>
@@ -14,26 +28,18 @@ function AllBooks() {
 
 
             <div className={ABM['books-grid']}>
-                <div className={ABM['book-card']}>
-                    <img src="https://place-hold.it/300" />
-                    <p>Book Title</p>
-                    <p>Author</p>
-                </div>
-                <div className={ABM['book-card']}>
-                    <img src="https://place-hold.it/300" />
-                    <p>Book Title</p>
-                    <p>Author</p>
-                </div>
-                <div className={ABM['book-card']}>
-                    <img src="https://place-hold.it/300" />
-                    <p>Book Title</p>
-                    <p>Author</p>
-                </div>
-                <div className={ABM['book-card']}>
-                    <img src="https://place-hold.it/300" />
-                    <p>Book Title</p>
-                    <p>Author</p>
-                </div>
+                {books.map(book => {
+                    return(
+                        <div className={ABM['book-card']}>
+                        <img src={`http://localhost:3000/images/${book.image_name}`} alt={`${book.name} by ${book.author}`} />
+                        <h5>{book.name}</h5>
+                        <br />
+                        <hr />
+                        <br />
+                        <p>{book.author}</p>
+                    </div>
+                    );
+                })}
             </div>
         </div>
     );
