@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import ModalContent from "./AddBookModalContent";
 import ABM from '../pages/AllBooks.module.css';
 
-function AddBookModal() {
+function AddBookModal({ onBookAdded }) {
 
     const [showModal, setShowModal] = useState(false);
 
@@ -12,7 +12,7 @@ function AddBookModal() {
             <button className={ABM["add-book-btn"]} onClick={() => { setShowModal(true) }}>Add Book</button>
 
             {showModal && createPortal(
-                <ModalContent onClose={ () => { setShowModal(false) } }/>,
+                <ModalContent  onBookAdded={ onBookAdded } onClose={ () => { setShowModal(false) } }/>,
                 document.body)}
         </>
     );

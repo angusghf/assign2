@@ -9,13 +9,18 @@ import ABM from '../pages/AllBooks.module.css';
 function AllBooks() {
 
     const [books, setBooks] = useState([]);
-    useEffect(() => {
+
+    const getAllBooks = function() {
         fetch("http://localhost:3000/books")
-            .then(res => res.json())
-            .then((jsonData) => {
-                setBooks(jsonData);
-                // console.log(jsonData);
-            })
+        .then(res => res.json())
+        .then((jsonData) => {
+            setBooks(jsonData);
+            // console.log(jsonData);
+        })
+    }
+
+    useEffect(() => {
+        getAllBooks();
     }, []);
 
 
@@ -25,7 +30,7 @@ function AllBooks() {
 
             {/* Filter and Add Book Buttons Section */}
             <div className={ABM['button-container']}>
-                <AddBookModal />
+                <AddBookModal onBookAdded={getAllBooks}/>
                 {/* <button className={ABM['filter-btn']}>Filter by Genre</button>
                 <button className={ABM['add-book-btn']}>+ Add Book</button> */}
             </div>

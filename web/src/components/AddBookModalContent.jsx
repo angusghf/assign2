@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import m from './AddBookModalContent.module.css';
 import ABM from '../pages/AllBooks.module.css';
 
-function ModalContent({ onClose }) {
+function ModalContent({ onClose, onBookAdded }) {
 
     const [dbAuthors, setDbAuthors] = useState();
 
@@ -36,6 +36,10 @@ function ModalContent({ onClose }) {
         });
 
         const bookResult = await bookAPIRequest.json();
+
+        onClose();
+        onBookAdded();
+
         console.log(bookAPIRequest);
 
     };
