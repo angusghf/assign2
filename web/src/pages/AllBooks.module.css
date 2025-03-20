@@ -1,4 +1,3 @@
-/* AllBooks.module.css */
 .books-container {
     width: 100%;
     padding: 20px;
@@ -11,15 +10,13 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Button Container for Filter and Add Book Buttons */
 .button-container {
     display: flex;
-    justify-content: space-between; /* Space between buttons */
-    gap: 20px; /* Optional: adjust the space between the buttons */
+    justify-content: space-between;
+    gap: 20px;
     margin-bottom: 20px;
 }
 
-/* Filter Button Style */
 .filter-btn, .add-book-btn {
     padding: 10px 20px;
     font-size: 16px;
@@ -36,23 +33,21 @@ h1 {
     background-color: #5a4c6b;
 }
 
-/* Books Cards Layout */
 .books-grid {
     display: flex;
-    flex-wrap: wrap; /* Allows wrapping of the cards */
-    justify-content: flex-start; /* Align cards to the left */
+    flex-wrap: wrap;
+    justify-content: flex-start;
     gap: 20px;
     margin-top: 20px;
 }
 
-/* Individual Book Card */
 .book-card {
     background-color: #f8e1c2;
     padding: 20px;
     border-radius: 8px;
     text-align: center;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    width: 200px; /* Fixed width for each card */
+    width: 200px;
 }
 
 .book-card img {

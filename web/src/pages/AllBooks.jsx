@@ -1,5 +1,5 @@
 import React from 'react';
-import ABM from '../pages/AllBooks.module.css'; // Import the CSS module
+import ABM from '../pages/AllBooks.module.css';
 
 function AllBooks() {
     return (
@@ -15,19 +15,19 @@ function AllBooks() {
 
             <div className={ABM['books-grid']}>
                 <div className={ABM['book-card']}>
-                    <img src="https://via.placeholder.com/150" alt="Placeholder" />
+                    <img src="https://place-hold.it/300" />
                     <p>Book Title</p>
                 </div>
                 <div className={ABM['book-card']}>
-                    <img src="https://via.placeholder.com/150" alt="Placeholder" />
+                    <img src="https://place-hold.it/300" />
                     <p>Book Title</p>
                 </div>
                 <div className={ABM['book-card']}>
-                    <img src="https://via.placeholder.com/150" alt="Placeholder" />
+                    <img src="https://place-hold.it/300" />
                     <p>Book Title</p>
                 </div>
                 <div className={ABM['book-card']}>
-                    <img src="https://via.placeholder.com/150" alt="Placeholder" />
+                    <img src="https://place-hold.it/300" />
                     <p>Book Title</p>
                 </div>
             </div>

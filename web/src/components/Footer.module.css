@@ -1,29 +1,18 @@
 .footer {
-    background-color: #2e1f33;
+    background-color: #3e2c41;
     color: #f8e1c2;
     padding: 20px;
     text-align: center;
     font-family: 'Garamond', 'Georgia', serif;
-    border-top: 4px solid #b78a5b;
-    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.2);
+    border-bottom: 4px solid #b78a5b;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
     bottom: 0;
     position: absolute;
     width: 100%;
+    box-sizing: border-box;
 }
-
-.footer p {
-    font-size: 14px;
+* {
     margin: 0;
-    opacity: 0.8;
-}
-
-.footer a {
-    color: #d4af7a;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.footer a:hover {
-    text-decoration: underline;
-    color: #e6c391;
+    padding: 0;
+    box-sizing: border-box;
 }
