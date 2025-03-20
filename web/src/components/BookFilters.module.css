@@ -1,0 +1,40 @@
+.filters-container {
+    background-color: #dfbee7;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: auto;
+    margin: 20 20 0 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filters-container h2 {
+    font-size: 20px;
+    color: #3e2c41;
+    text-align: center;
+    margin-right: 15px;
+}
+
+.filters-container label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+}
+
+.filters-container input[type="checkbox"] {
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+    accent-color: #3e2c41;
+    cursor: pointer;
+}
+
+.filters-container input[type="checkbox"]:hover {
+    transform: scale(1.1);
+}

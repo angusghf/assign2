@@ -42,13 +42,11 @@ function AllBooks() {
                         <div className={ABM['book-card']}>
                         <img src={`http://localhost:3000/images/${book.image_name}`} alt={`${book.name} by ${book.author}`} />
                         <h5>{book.name}</h5>
-                        <br />
                         <hr />
-                        <br />
                         <p>{book.author}</p>
                         <br />
-                        <button>edit</button>
-                        <button>hi</button>
+                        <button className={ABM['edit-button']}>edit</button>
+                        <button className={ABM['view-button']}>view</button>
                     </div>
                     );
                 })}

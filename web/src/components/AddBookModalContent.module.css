@@ -27,24 +27,36 @@
 }
 
 .close-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: #ff2468;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    cursor: pointer;
-    color: white;
-    font-weight: bold;
-    margin-top: 10px;
-    margin-right: 10px;
+      background-color: #EA4C89;
+      border-radius: 8px;
+      border-style: none;
+      box-sizing: border-box;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: inline-block;
+      font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      height: 40px;
+      line-height: 20px;
+      list-style: none;
+      margin: 0;
+      outline: none;
+      padding: 10px 16px;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      transition: color 100ms;
+      vertical-align: baseline;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
 }
 
 .add-button {
     background-color: #4caf50;
     color: white;
-    padding: 10px 20px;
+    padding: 10px 0px;
     border: none;
     border-radius: 5px;
     cursor: pointer;

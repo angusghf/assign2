@@ -13,8 +13,6 @@ h1 {
 .button-container {
     display: flex;
     justify-content: space-between;
-    gap: 20px;
-    margin-bottom: 20px;
 }
 
 .filter-btn, .add-book-btn {
@@ -38,7 +36,7 @@ h1 {
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 20px;
-    margin-top: 20px;
+    margin-top: 5px;
 }
 
 .book-card {
@@ -109,4 +107,57 @@ h1 {
 
 .form-group button:hover {
     background-color: #5a4c6b;
+}
+
+.edit-button {
+    background-color: #23ac2a;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+.view-button {
+    background-color: #081b4e;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0 0 0 10px;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
 }
