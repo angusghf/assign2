@@ -3,20 +3,28 @@
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    width: auto;
-    margin: 20 20 0 20;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
 }
 
-.filters-container h2 {
-    font-size: 20px;
+.filters-container form {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+.filters-container h4 {
+    font-size: 18px;
     color: #3e2c41;
-    text-align: center;
-    margin-right: 15px;
+    margin: 0;
+    white-space: nowrap;
 }
 
 .filters-container label {
@@ -25,10 +33,11 @@
     font-size: 16px;
     color: #333;
     cursor: pointer;
+    gap: 8px;
+    white-space: nowrap;
 }
 
 .filters-container input[type="checkbox"] {
-    margin-right: 8px;
     width: 18px;
     height: 18px;
     accent-color: #3e2c41;
@@ -37,4 +46,20 @@
 
 .filters-container input[type="checkbox"]:hover {
     transform: scale(1.1);
+}
+
+.filters-container input[type="submit"] {
+    background-color: #3e2c41;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    white-space: nowrap;
+}
+
+.filters-container input[type="submit"]:hover {
+    background-color: #2a1d2f;
 }
