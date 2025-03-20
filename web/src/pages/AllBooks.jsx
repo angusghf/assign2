@@ -17,18 +17,22 @@ function AllBooks() {
                 <div className={ABM['book-card']}>
                     <img src="https://place-hold.it/300" />
                     <p>Book Title</p>
+                    <p>Author</p>
                 </div>
                 <div className={ABM['book-card']}>
                     <img src="https://place-hold.it/300" />
                     <p>Book Title</p>
+                    <p>Author</p>
                 </div>
                 <div className={ABM['book-card']}>
                     <img src="https://place-hold.it/300" />
                     <p>Book Title</p>
+                    <p>Author</p>
                 </div>
                 <div className={ABM['book-card']}>
                     <img src="https://place-hold.it/300" />
                     <p>Book Title</p>
+                    <p>Author</p>
                 </div>
             </div>
         </div>
