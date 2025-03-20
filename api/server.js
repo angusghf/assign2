@@ -2,49 +2,22 @@ const express = require('express');
 const app = express();
 const mysql = require("mysql2");
 const cors = require('cors');
+const bodyParser = require("body-parser");
+// const db = require("./db");
 const port = 3000;
 
+// import the routers
+const booksRouter = require('./routers/books'); 
+const authorsRouter = require('./routers/authors');
 
 // Accepts requests from any location or url
 app.use(cors());
-
+app.use(bodyParser.json())
 app.use(express.static('public'));
-const connection = mysql.createConnection({
-    host: "localhost",
-    user: "book_db_user",
-    password: "secretPassword1",
-    database: "book",
-    port: 8889
-});
 
-connection.connect((err) => {
-    if (err) {
-        console.log("ERROR", err);
-        return;
-    }
-
-    console.log("connected");
-});
-
-
-
-app.get("/books", (req, res) => {
-    const sql = `
-    SELECT novels.*, authors.name AS author
-    FROM novels
-    JOIN authors ON novels.author_id=authors.id
-        `;
-
-    connection.query(sql, (err, results) => {
-        if (err) {
-            res.status(500).send(err);
-            return;
-        }
-        res.json(results);
-
-    });
-
-});
+// Initializing the Routers
+app.use("/books", booksRouter);
+app.use("/authors", authorsRouter);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)

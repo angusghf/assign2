@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 
+
+import AddBookModal from '../components/AddBookModal';
+
 import React from 'react';
 import ABM from '../pages/AllBooks.module.css';
 
@@ -22,8 +25,9 @@ function AllBooks() {
 
             {/* Filter and Add Book Buttons Section */}
             <div className={ABM['button-container']}>
-                <button className={ABM['filter-btn']}>Filter by Genre</button>
-                <button className={ABM['add-book-btn']}>+ Add Book</button>
+                <AddBookModal />
+                {/* <button className={ABM['filter-btn']}>Filter by Genre</button>
+                <button className={ABM['add-book-btn']}>+ Add Book</button> */}
             </div>
 
 
