@@ -1,6 +1,7 @@
 const express = require("express");
 const booksRouter = express.Router();
 const db = require("../db");
+const upload = require("../storage");
 
 booksRouter.get("/", (req, res) => {
     const sql = `
@@ -18,6 +19,14 @@ booksRouter.get("/", (req, res) => {
 
     });
 
+});
+
+booksRouter.post("/", upload.single("image"), (req, res) => {
+    const { author_id, title } = req.body;
+    const imageName = req.file.filename;
+    console.log("author:", author_id);
+    console.log("title:", title);
+    console.log("imageName:", imageName);
 });
 
 module.exports = booksRouter;
