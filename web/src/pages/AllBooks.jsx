@@ -46,6 +46,9 @@ function AllBooks() {
                         <hr />
                         <br />
                         <p>{book.author}</p>
+                        <br />
+                        <button>edit</button>
+                        <button>hi</button>
                     </div>
                     );
                 })}
