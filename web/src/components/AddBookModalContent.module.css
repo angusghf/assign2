@@ -1,3 +1,8 @@
+.spacer {
+    padding-top: 20px;
+    margin-bottom: 10px;
+}
+
 .modal-container {
     position: fixed;
     top: 0;
@@ -47,7 +52,3 @@
     margin-top: 10px;
 }
 
-.spacer {
-    padding-top: 102px;
-    margin-bottom: 10px;
-}

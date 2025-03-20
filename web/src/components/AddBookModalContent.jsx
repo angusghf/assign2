@@ -43,8 +43,8 @@ function ModalContent({ onClose }) {
                         id="image"
                         onChange={(e) => setImage(e.target.files[0])} />
 
-                    <div className={ABM['spacer']}>
-                        <button className={ABM['add-button']} type="submit">Add tape</button>
+                    <div className={m['spacer']}>
+                        <button className={m['add-button']} type="submit">Add tape</button>
                     </div>
                 </form>
                 <button className={m["close-button"]} onClick={onClose}>Close</button>
