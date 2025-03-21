@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import BFC from '../components/BookFilters.module.css';
 
-function BookFilters() {
+function BookFilters( { updateBooks } ) {
 
     const [authors, setAuthors] = useState([]);
 
@@ -13,7 +13,6 @@ function BookFilters() {
                 setAuthors(data);
                 // console.log("---authors---");
                 // console.log(data);
-                setAuthors(data);
             });
     }, []);
 
@@ -31,7 +30,7 @@ function BookFilters() {
         fetch(`http://localhost:3000/books?${queryString}`)
             .then( (response) => response.json())
             .then( (data) => {
-                console.log(data);
+                updateBooks(data);
             });
 
         // console.log("---Selected Authors Query---")

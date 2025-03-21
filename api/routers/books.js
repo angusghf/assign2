@@ -16,10 +16,16 @@ booksRouter.get("/", (req, res) => {
 
     if(authors){
         sql += ` WHERE authors.id IN (?)`;
-        queryParams.push(...authors);
+        if(Array.isArray(authors)){
+            queryParams.push(...authors);
+        } else {
+            queryParams.push(authors);
+        }
     }
 
-    db.query(sql, [authors], (err, results) => {
+    // console.log(queryParams);
+
+    db.query(sql, [queryParams], (err, results) => {
         if (err) {
             res.status(500).send(err);
             return;
