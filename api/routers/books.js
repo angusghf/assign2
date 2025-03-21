@@ -4,13 +4,22 @@ const db = require("../db");
 const upload = require("../storage");
 
 booksRouter.get("/", (req, res) => {
-    const sql = `
+
+    const authors = req.query.authors;
+
+    let sql = `
     SELECT novels.*, authors.name AS author
     FROM novels
-    JOIN authors ON novels.author_id=authors.id
-        `;
+    JOIN authors ON novels.author_id=authors.id`;
 
-    db.query(sql, (err, results) => {
+    const queryParams = [];
+
+    if(authors){
+        sql += ` WHERE authors.id IN (?)`;
+        queryParams.push(...authors);
+    }
+
+    db.query(sql, [authors], (err, results) => {
         if (err) {
             res.status(500).send(err);
             return;
@@ -37,7 +46,7 @@ booksRouter.post("/", upload.single("image"), (req, res) => {
             return res.status(500).send("An error has occured!");
         }
 
-        res.status(200).json({message: "Book added successfully!"})
+        res.status(200).json({ message: "Book added successfully!" })
 
     })
 

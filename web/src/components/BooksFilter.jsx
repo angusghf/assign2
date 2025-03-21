@@ -9,25 +9,51 @@ function BookFilters() {
     useEffect(() => {
         fetch("http://localhost:3000/authors")
             .then((response) => response.json())
-            .then( data => {
+            .then(data => {
                 setAuthors(data);
-                console.log("---authors---");
-                console.log(data);
+                // console.log("---authors---");
+                // console.log(data);
                 setAuthors(data);
             });
     }, []);
 
+    const handleFilterSubmit = (event) => {
+        event.preventDefault();
+
+        const filterFormData = new FormData(event.target);
+        const selectedAuthors = filterFormData.getAll("authors");
+
+        const queryStringArray = selectedAuthors.map((id) => `authors=${id}`);
+        const queryString = queryStringArray.join("&")
+
+        console.log(queryString);
+
+        fetch(`http://localhost:3000/books?${queryString}`)
+            .then( (response) => response.json())
+            .then( (data) => {
+                console.log(data);
+            });
+
+        // console.log("---Selected Authors Query---")
+        // console.log(queryString);
+
+    }
+
     return (
         <div className={BFC['filters-container']}>
-            <form>
+            <form onSubmit={handleFilterSubmit}>
                 <h4>Authors</h4>
-                <label>
-                    <input type="checkbox" name="author" />
-                    Author Name
-                </label>
+                {authors.map(author => {
+                    return (
+                        <label key={author.id}>
+                            <input type="checkbox" name="authors" value={author.id} />
+                            {author.name}
+                        </label>
+                    );
+                })}
                 <input type="submit" value="Apply" />
             </form>
-        </div>
+        </div >
     );
 }
 
