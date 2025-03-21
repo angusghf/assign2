@@ -30,8 +30,6 @@ function AllBooks() {
 
     return (
         <div className={ABM['books-container']}>
-            <h1>My Favorite Books</h1>
-
             {/* Filter and Add Book Buttons Section */}
             <div className={ABM['button-container']}>
                 <AddBookModal onBookAdded={fetchBooks} />
