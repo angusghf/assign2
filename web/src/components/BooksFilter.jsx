@@ -8,11 +8,9 @@ function BookFilters( { updateBooks } ) {
 
     useEffect(() => {
         fetch("http://localhost:3000/authors")
-            .then((response) => response.json())
-            .then(data => {
+            .then( (response) => response.json() )
+            .then( data => {
                 setAuthors(data);
-                // console.log("---authors---");
-                // console.log(data);
             });
     }, []);
 

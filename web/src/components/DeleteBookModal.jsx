@@ -4,7 +4,7 @@ import DeleteBookModalContent from "./DeleteBookModalContent";
 
 import ABM from '../pages/AllBooks.module.css';
 
-function DeleteBookModal() {
+function DeleteBookModal( { book, onBookDeleted } ) {
 
     const [showModal, setShowModal] = useState(false);
 
@@ -13,6 +13,8 @@ function DeleteBookModal() {
             <button className={ABM["delete-btn"]} onClick={() => { setShowModal(true) }}
             >Delete</button>
             {showModal && createPortal(<DeleteBookModalContent
+            book={book}
+            onBookDeleted={onBookDeleted}
                 onClose={() => { setShowModal(false) }}
             />,
                 document.body)}

@@ -208,3 +208,17 @@ h1 {
     -webkit-user-select: none;
     touch-action: manipulation;
 }
+
+.delete-book-btn {
+    background-color: #cef195;
+    border-radius: 2px;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}

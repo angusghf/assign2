@@ -58,4 +58,22 @@ booksRouter.post("/", upload.single("image"), (req, res) => {
 
 });
 
+booksRouter.delete("/:id", (req, res) => {
+    const id = req.params.id;
+    const sql = `DELETE FROM novels WHERE id = ? LIMIT 1`;
+    db.query(sql, [id], (err, results) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Internal Server Error");
+        }
+
+        res.json({message: "Book Deleted"});
+
+    });
+
+
+    console.log(id);
+    res.send(id);
+});
+
 module.exports = booksRouter;

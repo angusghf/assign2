@@ -13,13 +13,10 @@ function AllBooks() {
 
     const [books, setBooks] = useState([]);
 
-    const getAllBooks = function () {
-        fetch("http://localhost:3000/books")
-            .then(res => res.json())
-            .then((jsonData) => {
-                setBooks(jsonData);
-
-            })
+    const fetchBooks = async () => {
+        fetch('http://localhost:3000/books/')
+            .then(response => response.json())
+            .then(data => setBooks(data));
     }
 
     const handleUpdatedBooks = (booksArray) => {
@@ -27,7 +24,7 @@ function AllBooks() {
     }
 
     useEffect(() => {
-        getAllBooks();
+        fetchBooks();
     }, []);
 
 
@@ -37,8 +34,8 @@ function AllBooks() {
 
             {/* Filter and Add Book Buttons Section */}
             <div className={ABM['button-container']}>
-                <AddBookModal onBookAdded={getAllBooks} />
-                <BooksFilter updateBooks={handleUpdatedBooks}/>
+                <AddBookModal onBookAdded={fetchBooks} />
+                <BooksFilter updateBooks={handleUpdatedBooks} />
                 {/* <button className={ABM['filter-btn']}>Filter by Genre</button>
                 <button className={ABM['add-book-btn']}>+ Add Book</button> */}
             </div>
@@ -55,7 +52,7 @@ function AllBooks() {
                             <br />
                             <button className={ABM['edit-button']}>edit</button>
                             <button className={ABM['view-button']}>view</button>
-                            <DeleteBookModal />
+                            <DeleteBookModal onBookDeleted={fetchBooks} book={book} />
                         </div>
                     );
                 })}
