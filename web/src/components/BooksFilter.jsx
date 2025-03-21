@@ -23,8 +23,6 @@ function BookFilters( { updateBooks } ) {
         const queryStringArray = selectedAuthors.map((id) => `authors=${id}`);
         const queryString = queryStringArray.join("&")
 
-        console.log(queryString);
-
         fetch(`http://localhost:3000/books?${queryString}`)
             .then( (response) => response.json())
             .then( (data) => {

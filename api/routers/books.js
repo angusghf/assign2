@@ -14,9 +14,9 @@ booksRouter.get("/", (req, res) => {
 
     const queryParams = [];
 
-    if(authors){
+    if (authors) {
         sql += ` WHERE authors.id IN (?)`;
-        if(Array.isArray(authors)){
+        if (Array.isArray(authors)) {
             queryParams.push(...authors);
         } else {
             queryParams.push(authors);
@@ -67,13 +67,10 @@ booksRouter.delete("/:id", (req, res) => {
             res.status(500).send("Internal Server Error");
         }
 
-        res.json({message: "Book Deleted"});
+        res.json({ message: "Book Deleted" });
 
     });
-
-
     console.log(id);
-    res.send(id);
 });
 
 module.exports = booksRouter;
