@@ -80,7 +80,7 @@ function ModalContent({ onClose, onBookAdded }) {
                         onChange={(e) => setImage(e.target.files[0])} />
 
                     <div className={m['spacer']}>
-                        <button className={m['add-button']} type="submit">Add tape</button>
+                        <button className={m['add-button']} type="submit">Add Book</button>
                     </div>
                 </form>
                 <button className={m["close-button"]} onClick={onClose}>Close</button>
