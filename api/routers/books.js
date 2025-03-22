@@ -74,22 +74,15 @@ booksRouter.delete("/:id", (req, res) => {
 });
 
 
-// Update a book entry in the database
-booksRouter.put('/:id', upload.single('image'), (req, res) => {
-
-    // Get the id from the URL
+booksRouter.put("/:id", upload.single("image"), (req, res) => {
     const { id } = req.params;
+    const { author_id, title } = req.body;
 
-    // Get the title and author ID from the request body
-    const { name, description, author_id } = req.body;
+    let updateNovelSQL = 
+        `UPDATE novels
+        SET name = ?, author_id = ?`;
 
-
-    let updateNovelSQL = `
-      UPDATE novels
-      SET name = ?, description = ?, author_id = ?
-    `;
-
-    const queryParams = [name, description, author_id];
+    const queryParams = [title, author_id];
 
     if (req.file) {
         updateNovelSQL += `, image_name = ?`;
@@ -100,15 +93,15 @@ booksRouter.put('/:id', upload.single('image'), (req, res) => {
     queryParams.push(id);
 
     db.query(updateNovelSQL, queryParams, (err, results) => {
-
         if (err) {
-            console.error(err);
-            return res.status(500).send('An error occurred');
+            console.log(err);
+            return res.status(500).send("Internal Server Error");
         }
 
-        res.json({ message: 'Book updated successfully' });
+        res.json({ message: "Book updated successfully!" });
     });
 });
+
 
 
 module.exports = booksRouter;
