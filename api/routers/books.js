@@ -99,15 +99,15 @@ booksRouter.put('/:id', upload.single('image'), (req, res) => {
     updateNovelSQL += ` WHERE id = ? LIMIT 1`;
     queryParams.push(id);
 
-    // db.query(updateNovelSQL, queryParams, (err, results) => {
+    db.query(updateNovelSQL, queryParams, (err, results) => {
 
-    //     if (err) {
-    //         console.error(err);
-    //         return res.status(500).send('An error occurred');
-    //     }
+        if (err) {
+            console.error(err);
+            return res.status(500).send('An error occurred');
+        }
 
-    //     res.json({ message: 'Book updated successfully' });
-    // });
+        res.json({ message: 'Book updated successfully' });
+    });
 });
 
 
