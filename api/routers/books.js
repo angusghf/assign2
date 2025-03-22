@@ -73,4 +73,42 @@ booksRouter.delete("/:id", (req, res) => {
     console.log(id);
 });
 
+
+// Update a book entry in the database
+booksRouter.put('/:id', upload.single('image'), (req, res) => {
+
+    // Get the id from the URL
+    const { id } = req.params;
+
+    // Get the title and author ID from the request body
+    const { name, description, author_id } = req.body;
+
+
+    let updateNovelSQL = `
+      UPDATE novels
+      SET name = ?, description = ?, author_id = ?
+    `;
+
+    const queryParams = [name, description, author_id];
+
+    if (req.file) {
+        updateNovelSQL += `, image_name = ?`;
+        queryParams.push(req.file.filename);
+    }
+
+    updateNovelSQL += ` WHERE id = ? LIMIT 1`;
+    queryParams.push(id);
+
+    // db.query(updateNovelSQL, queryParams, (err, results) => {
+
+    //     if (err) {
+    //         console.error(err);
+    //         return res.status(500).send('An error occurred');
+    //     }
+
+    //     res.json({ message: 'Book updated successfully' });
+    // });
+});
+
+
 module.exports = booksRouter;

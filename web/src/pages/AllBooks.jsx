@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import AddBookModal from '../components/AddBookModal';
 import BooksFilter from "../components/BooksFilter";
 import DeleteBookModal from "../components/DeleteBookModal";
+import UpdateBookModal from "../components/UpdateBookModal";
 
 
 import React from 'react';
@@ -48,8 +49,9 @@ function AllBooks() {
                             <hr />
                             <p>{book.author}</p>
                             <br />
-                            <button className={ABM['edit-button']}>edit</button>
-                            <button className={ABM['view-button']}>view</button>
+                            {/* <button className={ABM['edit-button']}>edit</button>
+                            <button className={ABM['view-button']}>view</button> */}
+                            <UpdateBookModal onBookUpdated={fetchBooks} book={book} />
                             <DeleteBookModal onBookDeleted={fetchBooks} book={book} />
                         </div>
                     );
