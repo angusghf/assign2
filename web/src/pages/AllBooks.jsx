@@ -19,7 +19,9 @@ function AllBooks() {
 
     // Function to fetch books from the API
     const fetchBooks = async () => {
+        // getting the books from our db
         fetch('http://localhost:3000/books/')
+        // converting it to readable json
             .then(response => response.json())
             .then(data => setBooks(data));
     }
