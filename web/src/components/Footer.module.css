@@ -4,13 +4,14 @@
     padding: 2px;
     text-align: center;
     font-family: 'Garamond', 'Georgia', serif;
-    border-bottom: 4px solid #b78a5b;
+    border-bottom: 4px solid #800020; /* Burgundy accent color */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
     bottom: 0;
     position: absolute;
     width: 100%;
     box-sizing: border-box;
 }
+
 * {
     margin: 0;
     padding: 0;
