@@ -16,19 +16,31 @@ h1 {
 }
 
 .filter-btn, .add-book-btn {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #3e2c41;
-    color: #f8e1c2;
-    border: none;
+
     cursor: pointer;
-    font-family: 'Garamond', serif;
-    border-radius: 5px;
-    width: auto;
+    outline: 0;
+    color: #fff;
+    background-color: #06a726;
+    border-color: #06a726;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 16px;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    :hover {
+        color: #fff;
+        background-color: #06a726;
+        border-color: #06a726;
+    }
+
 }
 
 .filter-btn:hover, .add-book-btn:hover {
-    background-color: #5a4c6b;
+    background-color: #13882a;
 }
 
 .books-grid {
@@ -163,17 +175,27 @@ h1 {
 }
 
 .delete-btn {
-    background-color: #ff2468;
-    border-radius: 2px;
-    padding: 2px;
+
     cursor: pointer;
+    outline: 0;
+    color: #fff;
+    background-color: #fd0d45;
+    border-color: #fd0d45;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
     text-align: center;
-    text-decoration: none;
-    transition: color 100ms;
-    vertical-align: baseline;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 16px;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    :hover {
+        color: #fff;
+        background-color: #fd0d45;
+        border-color: #fd0d45;
+    }
+
 }
 
 .delete-modal-prompt {
@@ -196,31 +218,52 @@ h1 {
 }
 
 .exit-btn {
-    background-color: #95bdf1;
-    border-radius: 2px;
-    padding: 2px;
+
     cursor: pointer;
+    outline: 0;
+    color: #fff;
+    background-color: #fd0d0d;
+    border-color: #fd490d;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
     text-align: center;
-    text-decoration: none;
-    transition: color 100ms;
-    vertical-align: baseline;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 16px;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    :hover {
+        color: #fff;
+        background-color: #ff9e9e;
+        border-color: #0a58ca;
+    }
+
 }
 
+
 .delete-book-btn {
-    background-color: #cef195;
-    border-radius: 2px;
-    padding: 10px;
+
     cursor: pointer;
+    outline: 0;
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
     text-align: center;
-    text-decoration: none;
-    transition: color 100ms;
-    vertical-align: baseline;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 16px;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    :hover {
+        color: #fff;
+        background-color: #0b5ed7;
+        border-color: #0a58ca;
+    }
+
 }
 
 .UBM-popup {
@@ -373,7 +416,7 @@ h1 {
 }
 
 .edit-button {
-    background-color: #007bff;
+    background-color: #4d5b30;
     color: white;
     border-radius: 4px;
     padding: 6px 10px;
