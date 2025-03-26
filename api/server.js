@@ -13,6 +13,7 @@ const authorsRouter = require('./routers/authors');
 // Accepts requests from any location or url
 app.use(cors());
 app.use(bodyParser.json())
+// static express so that we can showcase images to the public
 app.use(express.static('public'));
 
 // Initializing the Routers
@@ -20,5 +21,6 @@ app.use("/books", booksRouter);
 app.use("/authors", authorsRouter);
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    // and putting this console log here so that we know it's live
+    console.log(`Book app listening on port ${port}`)
 });

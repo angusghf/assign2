@@ -1,13 +1,18 @@
+// importing necessary tools, dependencies 
 import React, { useState, useEffect } from "react";
+// and styles as well!
 import ABM from '../pages/AllBooks.module.css';
 
+// defining the UpdateBookModalContent component
 function UpdateBookModalContent({ onBookUpdated, book, onClose }) {
 
+    // state variables for form fields
     const [author, setAuthor] = useState(book.author_id);
     const [dbAuthors, setDbAuthors] = useState([]);
     const [title, setTitle] = useState(book.name);
     const [image, setImage] = useState(null);
 
+    // handling form submission
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
@@ -17,7 +22,9 @@ function UpdateBookModalContent({ onBookUpdated, book, onClose }) {
         formData.append("title", title);
         formData.append("image", image);
 
+        // api source from db based on the unique book id
         const bookResponse = await fetch(`http://localhost:3000/books/${book.id}`, {
+            // put method 
             method: "PUT",
             body: formData
         });
@@ -27,7 +34,9 @@ function UpdateBookModalContent({ onBookUpdated, book, onClose }) {
     }
 
     useEffect(() => {
+        // fetching authors from API from our db
         fetch("http://localhost:3000/authors")
+            // convert to readable json
             .then((res) => res.json())
             .then((data) => {
                 setDbAuthors(data);
@@ -40,9 +49,11 @@ function UpdateBookModalContent({ onBookUpdated, book, onClose }) {
     return (
         <div className={ABM['modal-content']}>
             <h3>Edit Book</h3>
+            {/* Form for updating book details */}
             <form onSubmit={handleFormSubmit} encType="multipart/form-data">
                 <div>
                     <div className={ABM['form-group']}>
+                        {/* Author selection */}
                         <label htmlFor="author">Author</label>
                         <select
                             name="author"
@@ -58,6 +69,7 @@ function UpdateBookModalContent({ onBookUpdated, book, onClose }) {
                 </div>
                 <div>
                     <div className={ABM['form-group']}>
+                        {/* title selection */}
                         <label htmlFor="title">Title</label>
                         <input
                             type="text"
@@ -70,6 +82,7 @@ function UpdateBookModalContent({ onBookUpdated, book, onClose }) {
                 </div>
                 <div>
                     <div className={ABM['form-group']}>
+                        {/* image selection */}
                         <label>Current Image</label>
                         <img src={`http://localhost:3000/images/${book.image_name}`} alt="Current" />
                         <label htmlFor="image">Upload New Image</label>
@@ -82,9 +95,11 @@ function UpdateBookModalContent({ onBookUpdated, book, onClose }) {
                     </div>
                 </div>
                 <div>
-                <button className={ABM.button} type="submit">Save</button>
+                    {/* save btn w unique styling */}
+                    <button className={ABM.button} type="submit">Save</button>
                 </div>
             </form>
+            {/* this one too */}
             <button className={ABM['close-button']} onClick={onClose}>&times;</button>
         </div>
     );

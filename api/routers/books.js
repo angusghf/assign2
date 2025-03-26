@@ -1,10 +1,12 @@
 const express = require("express");
-const booksRouter = express.Router();
 const db = require("../db");
 const upload = require("../storage");
 
-booksRouter.get("/", (req, res) => {
+const booksRouter = express.Router();
 
+// Get all books with optional filtering by authors
+booksRouter.get("/", (req, res) => {
+    // Get the authors query parameter
     const authors = req.query.authors;
 
     let sql = `
@@ -15,6 +17,7 @@ booksRouter.get("/", (req, res) => {
     const queryParams = [];
 
     if (authors) {
+        // Filter books by author IDs
         sql += ` WHERE authors.id IN (?)`;
         if (Array.isArray(authors)) {
             queryParams.push(...authors);
@@ -23,68 +26,65 @@ booksRouter.get("/", (req, res) => {
         }
     }
 
-    // console.log(queryParams);
-
     db.query(sql, [queryParams], (err, results) => {
         if (err) {
+            // Send error response if there's an error
             res.status(500).send(err);
             return;
         }
+        // Send the books as JSON response
         res.json(results);
-
     });
-
 });
 
+// Add a new book
 booksRouter.post("/", upload.single("image"), (req, res) => {
+    // Get author ID and title from request body
     const { author_id, title } = req.body;
+    // Get the filename of the uploaded image
     const image_name = req.file.filename;
-
-    // console.log("author:", author_id);
-    // console.log("title:", title);
-    // console.log("imageName:", imageName);
 
     const addNovelSQL = `INSERT INTO novels (author_id, name, image_name) VALUES (?,?,?)`;
     db.query(addNovelSQL, [author_id, title, image_name], (err, results) => {
-
         if (err) {
             console.log(err);
-            return res.status(500).send("An error has occured!");
+            // Send error response if there's an error
+            return res.status(500).send("An error has occurred!");
         }
-
-        res.status(200).json({ message: "Book added successfully!" })
-
-    })
-
+        // Send success response
+        res.status(200).json({ message: "Book added successfully!" });
+    });
 });
 
+// Delete a book by ID
 booksRouter.delete("/:id", (req, res) => {
+    // Get the book ID from the request parameters
     const id = req.params.id;
     const sql = `DELETE FROM novels WHERE id = ? LIMIT 1`;
     db.query(sql, [id], (err, results) => {
         if (err) {
             console.log(err);
+            // Send error response if there's an error
             res.status(500).send("Internal Server Error");
         }
-
+        // Send success response
         res.json({ message: "Book Deleted" });
-
     });
-    console.log(id);
 });
 
-
+// Update a book by ID
 booksRouter.put("/:id", upload.single("image"), (req, res) => {
+    // Get the book ID from the request parameters
     const { id } = req.params;
+    // Get author ID and title from request body
     const { author_id, title } = req.body;
 
-    let updateNovelSQL = 
-        `UPDATE novels
-        SET name = ?, author_id = ?`;
+    let updateNovelSQL = `UPDATE novels SET name = ?, author_id = ?`;
 
     const queryParams = [title, author_id];
 
     if (req.file) {
+        // Update the image name if a new image is uploaded
         updateNovelSQL += `, image_name = ?`;
         queryParams.push(req.file.filename);
     }
@@ -95,13 +95,12 @@ booksRouter.put("/:id", upload.single("image"), (req, res) => {
     db.query(updateNovelSQL, queryParams, (err, results) => {
         if (err) {
             console.log(err);
+            // Send error response if there's an error
             return res.status(500).send("Internal Server Error");
         }
-
+        // Send success response
         res.json({ message: "Book updated successfully!" });
     });
 });
-
-
 
 module.exports = booksRouter;
