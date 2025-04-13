@@ -6,7 +6,7 @@ function Home() {
         <main>
             <div>
                 <div>
-                    <h1>Welcome, collector</h1>
+                    <h1>Welcome!</h1>
                     <h3>Sign up and share your library</h3>
                     <div>
                         <Link to="/sign-up">Sign Up</Link>

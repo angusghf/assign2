@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function SignUp() {
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+        confirmPassword: ""
+    });
+    
     const handleSubmit = (e) => {
         e.preventDefault();
+
+    console.log(formData);
+
     };
 
     return (
@@ -14,7 +23,14 @@ function SignUp() {
                         <form onSubmit={handleSubmit}>
                             <div>
                                 <label htmlFor="email">Email</label>
-                                <input type="email" id="email" name="email" placeholder="Email" />
+                                <input type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Email"
+                                onChange={ (event) => {
+
+                                }}
+                                />
                             </div>
                             <div>
                                 <label htmlFor="password">Password</label>
