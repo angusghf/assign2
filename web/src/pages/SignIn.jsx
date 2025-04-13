@@ -3,10 +3,16 @@ import {useNavigate} from "react-router";
 
 function SignIn() {
 
+    const [loginSuccess, setLoginSucess] = useState(false);
     const [formData, setFormData] = useState({
         email: "",
         password: ""
     });
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(loginSuccess) {navigate("/books")}
+    }, [loginSuccess]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,6 +28,8 @@ function SignIn() {
         })
             .then(response => response.json() )
             .then(returnedData => {
+                localStorage.setItem("jwt-token", returnedData.token);
+                setLoginSucess(true);
                 console.log(returnedData);
             });
     };
