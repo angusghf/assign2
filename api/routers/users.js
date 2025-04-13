@@ -71,7 +71,7 @@ usersRouter.post("/sign-in", async (req, res) => {
             userId: userData.id,
             email: userData.email
         }, JWT_SECRET, { expiresIn: "4hr"});
-        res.json({ message: "Success!", jwt: token})
+        res.json({ message: "Success!", jwt: token});
 
     });
 
