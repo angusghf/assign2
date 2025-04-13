@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function SignUp() {
+
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -11,7 +12,7 @@ function SignUp() {
         e.preventDefault();
 
         if (formData.password !== formData.confirmPassword) {
-            alert("Passwords do not match");
+            alert("Passwords do not match!");
             return;
         }
 
@@ -22,14 +23,12 @@ function SignUp() {
             },
             body: JSON.stringify(formData)
         })
-        .then( response => response.json())
+        .then( response => response.json() )
         .then(returnedJSON => {
             console.log(returnedJSON);
-        })
+        });
 
-        console.log(formData);
-
-    };
+    };   
 
     return (
         <main>

@@ -4,6 +4,9 @@ const mysql = require("mysql2");
 const cors = require('cors');
 const bodyParser = require("body-parser");
 // const db = require("./db");
+
+const usersRouter = require("./routers/users");
+
 const port = 3000;
 
 // import the routers
@@ -19,6 +22,7 @@ app.use(express.static('public'));
 // Initializing the Routers
 app.use("/books", booksRouter);
 app.use("/authors", authorsRouter);
+app.use("/users", usersRouter);
 
 app.listen(port, () => {
     // and putting this console log here so that we know it's live
