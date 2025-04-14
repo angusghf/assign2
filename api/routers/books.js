@@ -1,13 +1,22 @@
+require("dotenv").config();
+
 const express = require("express");
 const db = require("../db");
 const upload = require("../storage");
+const authenticateToken = require("../auth.jwt");
 
 const booksRouter = express.Router();
 
+booksRouter.use(authenticateToken);
+
 // Get all books with optional filtering by authors
 booksRouter.get("/", (req, res) => {
+
+    console.log(req.user);
+
     // Get the authors query parameter
     const authors = req.query.authors;
+    const user_id = req.user.userId;
 
     let sql = `
     SELECT novels.*, authors.name AS author
@@ -24,15 +33,23 @@ booksRouter.get("/", (req, res) => {
         } else {
             queryParams.push(authors);
         }
+    } else {
+        sql += ` WHERE `
     }
 
-    db.query(sql, [queryParams], (err, results) => {
+    sql += ` novels.user_id = ? `;
+    queryParams.push(user_id);
+
+    console.log(queryParams)
+
+
+
+    db.query(sql, queryParams, (err, results) => {
         if (err) {
             // Send error response if there's an error
-            res.status(500).send(err);
+            res.status(500).send(` an error occured `);
             return;
         }
-        // Send the books as JSON response
         res.json(results);
     });
 });
@@ -41,11 +58,12 @@ booksRouter.get("/", (req, res) => {
 booksRouter.post("/", upload.single("image"), (req, res) => {
     // Get author ID and title from request body
     const { author_id, title } = req.body;
+    const user_id = req.user.userId;
     // Get the filename of the uploaded image
     const image_name = req.file.filename;
 
-    const addNovelSQL = `INSERT INTO novels (author_id, name, image_name) VALUES (?,?,?)`;
-    db.query(addNovelSQL, [author_id, title, image_name], (err, results) => {
+    const addNovelSQL = `INSERT INTO novels (author_id, name, image_name, user_id) VALUES (?,?,?,?)`;
+    db.query(addNovelSQL, [author_id, title, image_name, user_id], (err, results) => {
         if (err) {
             console.log(err);
             // Send error response if there's an error
@@ -60,8 +78,9 @@ booksRouter.post("/", upload.single("image"), (req, res) => {
 booksRouter.delete("/:id", (req, res) => {
     // Get the book ID from the request parameters
     const id = req.params.id;
-    const sql = `DELETE FROM novels WHERE id = ? LIMIT 1`;
-    db.query(sql, [id], (err, results) => {
+    const user_id = req.user.userId;
+    const sql = `DELETE FROM novels WHERE id = ? AND user_id = ? LIMIT 1`;
+    db.query(sql, [id, user_id], (err, results) => {
         if (err) {
             console.log(err);
             // Send error response if there's an error
@@ -76,8 +95,10 @@ booksRouter.delete("/:id", (req, res) => {
 booksRouter.put("/:id", upload.single("image"), (req, res) => {
     // Get the book ID from the request parameters
     const { id } = req.params;
+    const user_id = req.user.userId;
+
     // Get author ID and title from request body
-    const { author_id, title } = req.body;
+    const { title, author_id } = req.body;
 
     let updateNovelSQL = `UPDATE novels SET name = ?, author_id = ?`;
 
@@ -89,8 +110,11 @@ booksRouter.put("/:id", upload.single("image"), (req, res) => {
         queryParams.push(req.file.filename);
     }
 
-    updateNovelSQL += ` WHERE id = ? LIMIT 1`;
+    updateNovelSQL += ` WHERE id = ? AND user_id = ? LIMIT 1`;
     queryParams.push(id);
+    queryParams.push(user_id);
+
+    console.log(queryParams);
 
     db.query(updateNovelSQL, queryParams, (err, results) => {
         if (err) {

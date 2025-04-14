@@ -22,12 +22,18 @@ function AllBooks() {
         // getting the books from our db
         fetch('http://localhost:3000/books/', {
             headers: {
-                "Authorization": `Bearer ${localStorage.getItem("jwt-token")}`
+                Authorization: `Bearer ${localStorage.getItem("jwt-token")}`
             }
         })
         // converting it to readable json
             .then(response => response.json())
-            .then(data => setBooks(data));
+            .then(data => {
+                console.log(data);
+                setBooks(data)
+            }).catch(err => {
+                console.log(err);
+            })
+            ;
     }
 
     // Function to update books state when books are filtered
@@ -47,7 +53,7 @@ function AllBooks() {
             <div className={ABM['button-container']}>
                 <AddBookModal onBookAdded={fetchBooks} />
                 <BooksFilter updateBooks={handleUpdatedBooks} />
-            </div>
+            </div> 
 
             {/* Books display grid */}
             <div className={ABM['books-grid']}>

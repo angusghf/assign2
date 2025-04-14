@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import {useNavigate} from "react-router";
 
-function SignIn( {handleLogin} ) {
+function SignIn() {
 
     const [loginSuccess, setLoginSucess] = useState(false);
     const [formData, setFormData] = useState({
@@ -33,7 +33,6 @@ function SignIn( {handleLogin} ) {
                 console.log(returnedData);
             });
     };
-
 
     return (
         <main>

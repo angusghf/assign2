@@ -7,6 +7,9 @@ function DeleteBookModalContent({ book, onClose, onBookDeleted }) {
         event.preventDefault();
         // fetching our backend api books
         fetch(`http://localhost:3000/books/${book.id}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("jwt-token")}`
+            },
             // delete method here
             method: "DELETE"
         })

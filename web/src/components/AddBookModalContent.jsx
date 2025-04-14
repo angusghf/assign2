@@ -42,7 +42,10 @@ function ModalContent({ onClose, onBookAdded }) {
         // Send a request to the server to add a new book
         const bookAPIRequest = await fetch("http://localhost:3000/books", {
             method: "POST",
-            body: formData
+            body: formData,
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("jwt-token")}`,
+            }
         });
 
         const bookResult = await bookAPIRequest.json();

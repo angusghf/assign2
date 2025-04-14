@@ -24,6 +24,9 @@ function UpdateBookModalContent({ onBookUpdated, book, onClose }) {
 
         // api source from db based on the unique book id
         const bookResponse = await fetch(`http://localhost:3000/books/${book.id}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("jwt-token")}`
+            },
             // put method 
             method: "PUT",
             body: formData

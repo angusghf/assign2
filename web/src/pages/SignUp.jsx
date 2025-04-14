@@ -28,7 +28,7 @@ function SignUp() {
             console.log(returnedJSON);
         });
 
-    };   
+    };
 
     return (
         <main>

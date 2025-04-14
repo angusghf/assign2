@@ -6,7 +6,7 @@ import ABM from '../pages/AllBooks.module.css';
 
 // defining the UpdateBookModal component
 function UpdateBookModal({ onBookUpdated, book }) {
-        // state to manage modal visibility
+    // state to manage modal visibility
     const [showModal, setShowModal] = useState(false);
 
     return (
@@ -35,7 +35,7 @@ function UpdateBookModal({ onBookUpdated, book }) {
                             >
                                 &times;
                             </button>
-                                                        {/* Rendering the form inside the modal */}
+                            {/* Rendering the form inside the modal */}
                             <ModalContent
                                 onBookUpdated={onBookUpdated}
                                 book={book}
