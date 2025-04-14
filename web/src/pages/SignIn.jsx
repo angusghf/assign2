@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import {useNavigate} from "react-router";
 
-function SignIn() {
+function SignIn( {handleLogin} ) {
 
     const [loginSuccess, setLoginSucess] = useState(false);
     const [formData, setFormData] = useState({
@@ -30,6 +30,7 @@ function SignIn() {
             .then(returnedData => {
                 localStorage.setItem("jwt-token", returnedData.jwt);
                 setLoginSucess(true);
+                handleLogin();
                 console.log(returnedData);
             });
     };
