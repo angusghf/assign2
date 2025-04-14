@@ -30,10 +30,10 @@ function SignIn( {handleLogin} ) {
             .then(returnedData => {
                 localStorage.setItem("jwt-token", returnedData.jwt);
                 setLoginSucess(true);
-                handleLogin();
                 console.log(returnedData);
             });
     };
+
 
     return (
         <main>

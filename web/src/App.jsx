@@ -12,20 +12,21 @@ import Home from './pages/Home';
 import AllBooks from './pages/AllBooks';
 import Book from './pages/Book';
 
+const ProtectedAllBooks = authRequired(AllBooks);
+const ProtectedBook = authRequired(Book);
 
 
 function App() {
-
   const navigate = useNavigate();
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // Passed into the header to log out
   const handleLogout = () => {
-    
+
     localStorage.removeItem("jwt-token");
     setIsAuthenticated(false);
-    
+
     navigate("/sign-in");
 
   }
@@ -47,16 +48,18 @@ function App() {
 
 
 
+
   return (
     <div>
       <Header handleLogout={handleLogout} isAuthenticated={isAuthenticated} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/sign-in" element={<SignIn handleLogin={handleLogin} />} />
-        <Route path="/books" element={<AllBooks />} />
+        <Route path="/sign-in"
+          element={<SignIn handleLogin={handleLogin} />} />
+        <Route path="/books" element={<ProtectedAllBooks />} />
+        <Route path="/books/:id" element={<ProtectedBook />} />
         {/* <Route path="/books" element={<Navigate to="/" />} /> */}
-        <Route path="/books/:id" element={<Book />} />
       </Routes>
       <Footer />
 
