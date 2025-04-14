@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import {useNavigate} from "react-router";
+import { useNavigate } from "react-router";
 
 function SignIn() {
 
@@ -11,7 +11,7 @@ function SignIn() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if(loginSuccess) {navigate("/books")}
+        if (loginSuccess) { navigate("/books") }
     }, [loginSuccess]);
 
     const handleSubmit = (e) => {
@@ -26,7 +26,7 @@ function SignIn() {
             },
             body: JSON.stringify(formData)
         })
-            .then(response => response.json() )
+            .then(response => response.json())
             .then(returnedData => {
                 localStorage.setItem("jwt-token", returnedData.jwt);
                 setLoginSucess(true);

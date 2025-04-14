@@ -32,7 +32,11 @@ function BookFilters({ updateBooks }) {
         const queryString = queryStringArray.join("&")
 
         // fetch filtered books from the server based on the selected authors
-        fetch(`http://localhost:3000/books?${queryString}`)
+        fetch(`http://localhost:3000/books?${queryString}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("jwt-token")}`
+            }
+        })
             // again, changing it into readable json
             .then((response) => response.json())
             .then((data) => {

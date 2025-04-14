@@ -57,7 +57,7 @@ function AllBooks() {
 
             {/* Books display grid */}
             <div className={ABM['books-grid']}>
-                {books.map(book => {
+                {Array.isArray(books) && books.map(book => {
                     return (
                         <div className={ABM['book-card']}>
                             {/* book image with alt tags and the author's name */}
