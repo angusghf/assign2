@@ -19,25 +19,22 @@ booksRouter.get("/", (req, res) => {
     const user_id = req.user.userId;
 
     let sql = `
-    SELECT novels.*, authors.name AS author
-    FROM novels
-    JOIN authors ON novels.author_id=authors.id`;
+SELECT novels.*, authors.name AS author
+FROM novels
+JOIN authors ON novels.author_id = authors.id
+WHERE novels.user_id = ?`;
 
-    const queryParams = [];
+const queryParams = [user_id];
 
-    if (authors) {
-        // Filter books by author IDs
-        sql += ` WHERE authors.id IN (?)`;
-        if (Array.isArray(authors)) {
-            queryParams.push(...authors);
-        } else {
-            queryParams.push(authors);
-        }
-    } else {
-        sql += ` WHERE `
-    }
+if (authors) {
+    // Convert to array if it's not
+    const authorArray = Array.isArray(authors) ? authors : [authors];
+    // Add placeholder(s)
+    const placeholders = authorArray.map(() => '?').join(',');
+    sql += ` AND authors.id IN (${placeholders})`;
+    queryParams.push(...authorArray);
+}
 
-    sql += ` novels.user_id = ? `;
     queryParams.push(user_id);
 
     console.log(queryParams)
