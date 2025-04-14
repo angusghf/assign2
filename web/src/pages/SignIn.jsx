@@ -28,7 +28,7 @@ function SignIn() {
         })
             .then(response => response.json() )
             .then(returnedData => {
-                localStorage.setItem("jwt-token", returnedData.token);
+                localStorage.setItem("jwt-token", returnedData.jwt);
                 setLoginSucess(true);
                 console.log(returnedData);
             });

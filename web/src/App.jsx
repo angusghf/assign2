@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router';
 
 import Header from './components/Header';
@@ -12,9 +13,28 @@ import Book from './pages/Book';
 
 
 function App() {
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const handleLogout = () => {
+    localStorage.removeItem("jwt-token");
+    setIsAuthenticated(false);
+    return (<Navigate to="/sign-in" />);
+
+  }
+
+  useEffect(() => {
+    const jwtToken = localStorage.getItem("jwt-token");
+    if (jwtToken) {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+
+
   return (
     <div>
-      <Header />
+      <Header handleLogout={handleLogout} isAuthenticated={isAuthenticated} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/sign-up" element={<SignUp />} />
