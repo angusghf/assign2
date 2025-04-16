@@ -18,22 +18,23 @@ booksRouter.get("/", (req, res) => {
     const authors = req.query.authors;
     const user_id = req.user.userId;
 
+    // SQL query to get all novels by a specific user, along with the author's name
     let sql = `
 SELECT novels.*, authors.name AS author
 FROM novels
 JOIN authors ON novels.author_id = authors.id
 WHERE novels.user_id = ?`;
 
-const queryParams = [user_id];
+    const queryParams = [user_id];
 
-if (authors) {
-    // Convert to array if it's not
-    const authorArray = Array.isArray(authors) ? authors : [authors];
-    // Add placeholder(s)
-    const placeholders = authorArray.map(() => '?').join(',');
-    sql += ` AND authors.id IN (${placeholders})`;
-    queryParams.push(...authorArray);
-}
+    if (authors) {
+        // Convert to array if it's not
+        const authorArray = Array.isArray(authors) ? authors : [authors];
+        // Add placeholder(s)
+        const placeholders = authorArray.map(() => '?').join(',');
+        sql += ` AND authors.id IN (${placeholders})`;
+        queryParams.push(...authorArray);
+    }
 
     queryParams.push(user_id);
 

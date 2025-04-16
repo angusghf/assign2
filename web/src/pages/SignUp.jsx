@@ -1,7 +1,9 @@
+// importing react library 
 import React, { useState } from "react";
 
 function SignUp() {
 
+    // storing the user's input for email, password and confirm password
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -11,16 +13,20 @@ function SignUp() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        // checking to see if passwords match
         if (formData.password !== formData.confirmPassword) {
             alert("Passwords do not match!");
+            // does a return if passwords dont match
             return;
         }
 
         fetch("http://localhost:3000/users/", {
+            // sending data to server
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
+            // converts response into readable json
             body: JSON.stringify(formData)
         })
         .then( response => response.json() )
@@ -35,11 +41,13 @@ function SignUp() {
             <div>
                 <div>
                     <div>
+                        {/* again, our basic information...no fancy styling */}
                         <h1>Register</h1>
                         <form onSubmit={handleSubmit}>
                             <div>
                                 <label htmlFor="email">Email</label>
                                 <input
+                                // input for email
                                     type="email"
                                     id="email"
                                     name="email"
@@ -53,6 +61,7 @@ function SignUp() {
                             <div>
                                 <label htmlFor="password">Password</label>
                                 <input
+                                // input for password
                                     type="password"
                                     id="password"
                                     placeholder="Password"
@@ -66,6 +75,7 @@ function SignUp() {
                             <div>
                                 <label htmlFor="confirm-password">Confirm Password</label>
                                 <input type="password"
+                                // but also input for confirm password
                                     id="confirm-password"
                                     placeholder="Retype Password"
                                     name="confirm-password"
