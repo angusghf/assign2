@@ -5,7 +5,7 @@
 
 
 <!-- SETUP INSTRUCTIONS -->
-<!-- open the terminal and navigate to the project directory -->
-<!-- install the required dependencies by running npm install -->
-<!-- start the application by running npm dev for both API and WEB terminals -->
-<!-- Access the application at http://localhost:3000 -->
+<!-- open terminal -->
+<!-- install dependencies via 'npm install' -->
+<!-- start the application via npm run dev for both API and WEB terminals -->
+<!-- access the application at http://localhost:3000 -->
